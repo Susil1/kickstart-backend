@@ -13,7 +13,9 @@ async function pathExists(p) {
 
 async function createFolder(folder, window) {
 	try {
-		if (!pathExists(folder)) await fs.mkdir(folder, { recursive: true });
+		if (!(await pathExists(folder))) {
+			await fs.mkdir(folder, { recursive: true });
+		}
 	} catch (err) {
 		window.showErrorMessage(
 			`Failed to create folder ${folder}: ${err.message}`
@@ -23,7 +25,9 @@ async function createFolder(folder, window) {
 
 async function createFile(filePath, content = "", window) {
 	try {
-		if (!pathExists(filePath)) await fs.writeFile(filePath, content);
+		if (!(await pathExists(filePath))) {
+			await fs.writeFile(filePath, content);
+		}
 	} catch (err) {
 		window.showErrorMessage(
 			`Failed to create file ${filePath}: ${err.message}`
@@ -32,7 +36,7 @@ async function createFile(filePath, content = "", window) {
 }
 
 async function createFolders(window) {
-	// 👇 Get workspace root folder
+	// Get workspace root folder
 	const folders = vscode.workspace.workspaceFolders;
 	if (!folders || folders.length === 0) {
 		window.showErrorMessage("No workspace folder is open.");
