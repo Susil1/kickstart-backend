@@ -1,5 +1,4 @@
-import { log } from "console";
-
+const vscode = require("vscode");
 const fs = require("fs").promises;
 const path = require("path");
 
@@ -26,6 +25,14 @@ async function createFile(filePath, content = "", window) {
 }
 
 async function createFolders(window) {
+	// 👇 Get workspace root folder
+	const folders = vscode.workspace.workspaceFolders;
+	if (!folders || folders.length === 0) {
+		window.showErrorMessage("No workspace folder is open.");
+		return;
+	}
+	const workspaceRoot = folders[0].uri.fsPath;
+
 	const parentFolders = ["Frontend", "Backend"];
 	const parentFiles = [".gitignore"];
 
@@ -47,7 +54,7 @@ async function createFolders(window) {
 		if (folder === "Backend") {
 			// Create Backend/src and subfolders
 			for (const child of childFolders) {
-				const childPath = path.join(folder, child);
+				const childPath = path.join(workspaceRoot, folder, child);
 
 				if (child === "src") {
 					for (const grand of grandChildFolders) {
@@ -60,22 +67,28 @@ async function createFolders(window) {
 
 			// Backend child files
 			for (const file of childFiles) {
-				const filePath = path.join("Backend", file);
+				const filePath = path.join(workspaceRoot, "Backend", file);
 				await createFile(filePath, "", window);
 			}
 		} else {
-			await createFolder(folder, window);
+			await createFolder(path.join(workspaceRoot, folder), window);
 		}
 	}
 
 	// Parent-level files
 	for (const file of parentFiles) {
 		if (file === ".gitignore") {
-			await createFile(file, "node_modules/\n*.env", window);
+			await createFile(
+				path.join(workspaceRoot, file),
+				"node_modules/\n*.env",
+				window
+			);
 		} else {
-			await createFile(file, "", window);
+			await createFile(path.join(workspaceRoot, file), "", window);
 		}
 	}
 }
 
-module.exports = createFolders;
+module.exports = {
+	createFolders,
+};
