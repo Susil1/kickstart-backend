@@ -31,6 +31,15 @@
 			{
 				"command": "kickstart-backend.stopWatch",
 				"title": "Stop Watcher"
+			},
+			{
+				"command": "kickstart-backend.showlistdir",
+				"title": "Create Folder In SubFolder"
+			}
+			,
+			{
+				"command": "kickstart-backend.watchinother",
+				"title": "Watch Folder In SubFolder"
 			}
 		]
 	},
