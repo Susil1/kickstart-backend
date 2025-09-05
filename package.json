@@ -4,7 +4,7 @@
 	"description": "Generate a ready-to-use Node.js backend folder structure with a single command.",
 	"publisher": "susilsahoo",
 	"icon": "images/icon.png",
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"engines": {
 		"vscode": "^1.103.0"
 	},
