@@ -2,10 +2,16 @@
 	"name": "kickstart-backend",
 	"displayName": "Kickstart Backend",
 	"description": "Generate a ready-to-use Node.js backend folder structure with a single command.",
+	"publisher": "susilsahoo",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.103.0"
 	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Susil1/kickstart-backend"
+	},
+	"license": "MIT",
 	"categories": [
 		"Other"
 	],
