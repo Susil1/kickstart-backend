@@ -3,6 +3,7 @@
 	"displayName": "Kickstart Backend",
 	"description": "Generate a ready-to-use Node.js backend folder structure with a single command.",
 	"publisher": "susilsahoo",
+	"icon": "images/icon.png",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.103.0"
