@@ -35,15 +35,7 @@ async function createFile(filePath, content = "", window) {
 	}
 }
 
-async function createFolders(window) {
-	// Get workspace root folder
-	const folders = vscode.workspace.workspaceFolders;
-	if (!folders || folders.length === 0) {
-		window.showErrorMessage("No workspace folder is open.");
-		return;
-	}
-	const workspaceRoot = folders[0].uri.fsPath;
-
+async function createFolders(workspaceRoot, window) {
 	const parentFolders = ["Frontend", "Backend"];
 	const parentFiles = [".gitignore"];
 

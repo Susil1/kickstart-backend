@@ -11,14 +11,30 @@ function activate(context) {
 		async function () {
 			// Display a message box to the user
 			vscode.window.showInformationMessage("Creating Folders");
-			await createFolders(vscode.window);
+			// Get workspace root folder
+			const folders = vscode.workspace.workspaceFolders;
+			if (!folders || folders.length === 0) {
+				vscode.window.showErrorMessage("No workspace folder is open.");
+				return;
+			}
+			const workspaceRoot = folders[0].uri.fsPath;
+			await createFolders(workspaceRoot, vscode.window);
 		}
 	);
 	const gitkeep = vscode.commands.registerCommand(
 		"kickstart-backend.watch",
 		async () => {
 			try {
-				await watch();
+				const folders = vscode.workspace.workspaceFolders;
+				if (!folders || folders.length === 0) {
+					vscode.window.showErrorMessage(
+						"No workspace folder is open."
+					);
+					return;
+				}
+
+				const rootFolder = folders[0].uri.fsPath;
+				await watch(rootFolder);
 			} catch (err) {
 				vscode.window.showErrorMessage(
 					`Failed to start watcher: ${err.message}`

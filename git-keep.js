@@ -46,15 +46,7 @@ async function listDir(folderPath) {
 		return [];
 	}
 }
-async function watch() {
-	const folders = vscode.workspace.workspaceFolders;
-	if (!folders || folders.length === 0) {
-		vscode.window.showErrorMessage("No workspace folder is open.");
-		return;
-	}
-
-	const rootFolder = folders[0].uri.fsPath;
-
+async function watch(rootFolder) {
 	const watcher = chokidar.watch(rootFolder, {
 		persistent: true,
 		ignoreInitial: false,
