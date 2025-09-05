@@ -5,6 +5,7 @@ const watch = require("./git-keep");
 /**
  * @param {vscode.ExtensionContext} context
  */
+let watchObj = null;
 function activate(context) {
 	const disposable = vscode.commands.registerCommand(
 		"kickstart-backend.generate",
@@ -32,9 +33,16 @@ function activate(context) {
 					);
 					return;
 				}
+				if (watchObj) {
+					watchObj.close();
+					vscode.window.showInformationMessage(
+						"Previous watcher stopped."
+					);
+				}
 
 				const rootFolder = folders[0].uri.fsPath;
-				await watch(rootFolder);
+				watchObj = await watch(rootFolder);
+				vscode.window.showInformationMessage("Watcher started.");
 			} catch (err) {
 				vscode.window.showErrorMessage(
 					`Failed to start watcher: ${err.message}`
@@ -42,9 +50,22 @@ function activate(context) {
 			}
 		}
 	);
+	const stopWatcher = vscode.commands.registerCommand(
+		"kickstart-backend.stopWatch",
+		async () => {
+			if (watchObj) {
+				watchObj.close();
+				watchObj = null;
+				vscode.window.showInformationMessage("Watcher stopped.");
+			} else {
+				vscode.window.showWarningMessage("No watcher is running.");
+			}
+		}
+	);
 
 	context.subscriptions.push(disposable);
 	context.subscriptions.push(gitkeep);
+	context.subscriptions.push(stopWatcher);
 }
 
 // This method is called when your extension is deactivated
