@@ -107,6 +107,12 @@ function activate(context) {
 			});
 
 			if (choice) {
+				if (watchObj) {
+					watchObj.close();
+					vscode.window.showInformationMessage(
+						"Previous watcher stopped."
+					);
+				}
 				watchObj = await watch(`${rootPath}/${choice.label}`);
 			}
 		}
