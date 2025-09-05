@@ -1,9 +1,12 @@
+import { log } from "console";
+
 const fs = require("fs").promises;
 const path = require("path");
 
 async function createFolder(folder, window) {
 	try {
 		await fs.mkdir(folder, { recursive: true });
+		console.log(folder, " Created");
 	} catch (err) {
 		window.showErrorMessage(
 			`Failed to create folder ${folder}: ${err.message}`
@@ -14,6 +17,7 @@ async function createFolder(folder, window) {
 async function createFile(filePath, content = "", window) {
 	try {
 		await fs.writeFile(filePath, content);
+		console.log(filePath, " created");
 	} catch (err) {
 		window.showErrorMessage(
 			`Failed to create file ${filePath}: ${err.message}`
