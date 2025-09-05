@@ -16,6 +16,10 @@
 			{
 				"command": "kickstart-backend.generate",
 				"title": "Generate Folders"
+			},
+			{
+				"command": "kickstart-backend.watch",
+				"title": "Watch Folders"
 			}
 		]
 	},
