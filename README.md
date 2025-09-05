@@ -28,17 +28,23 @@ It scaffolds both **Frontend** and **Backend** folders and ensures a clean, cons
 
 ---
 
-## 🚀 Usage
+## 🚀 Commands
+
+The following commands are available in the Command Palette (**Ctrl+Shift+P** / **Cmd+Shift+P**):
+
+-   **Kickstart Backend: Generate Folders** – Creates the default folder structure in your workspace.
+-   **Kickstart Backend: Watch Folders** – Starts a watcher for your workspace folders.
+-   **Kickstart Backend: Stop Watcher** – Stops the currently active watcher.
+-   **Kickstart Backend: Create Folder In SubFolder** – Choose a subfolder to scaffold inside.
+-   **Kickstart Backend: Watch Folder In SubFolder** – Watch a specific subfolder for changes.
+
+## 🛠️ Usage
 
 1. Install **Kickstart Backend** from the VS Code Marketplace.
 2. Open your project/workspace in VS Code.
-3. Run the command palette (**Ctrl+Shift+P** / **Cmd+Shift+P**) →  
-   Search for:
-
-Kickstart Backend: Generate Project Structure
-
-4. Select the target folder (root or an existing one).
-5. Your scaffolded structure will appear instantly.
+3. Open the command palette (**Ctrl+Shift+P** / **Cmd+Shift+P**) and run any of the commands above.
+4. If prompted, select the target folder (root or a subfolder).
+5. Your scaffolded structure or watcher will start immediately.
 
 ---
 
