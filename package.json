@@ -27,6 +27,10 @@
 			{
 				"command": "kickstart-backend.watch",
 				"title": "Watch Folders"
+			},
+			{
+				"command": "kickstart-backend.stopWatch",
+				"title": "Stop Watcher"
 			}
 		]
 	},
