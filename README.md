@@ -28,36 +28,6 @@ It scaffolds both **Frontend** and **Backend** folders and ensures a clean, cons
 
 ---
 
-## 📂 Generated Structure
-
-Frontend/
-Backend/
-│ src/
-│ │ ├── config/
-│ │ │ └── .gitkeep
-│ │ ├── controller/
-│ │ │ └── .gitkeep
-│ │ ├── dao/
-│ │ │ └── .gitkeep
-│ │ ├── models/
-│ │ │ └── .gitkeep
-│ │ ├── routes/
-│ │ │ └── .gitkeep
-│ │ ├── services/
-│ │ │ └── .gitkeep
-│ │ ├── utils/
-│ │ │ └── .gitkeep
-│ │ └── tests/
-│ │ └── .gitkeep
-│
-│ .env
-│ app.js
-│ README.md
-│
-.gitignore
-
----
-
 ## 🚀 Usage
 
 1. Install **Kickstart Backend** from the VS Code Marketplace.
